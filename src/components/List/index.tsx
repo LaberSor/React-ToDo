@@ -1,25 +1,29 @@
 import React from "react";
+import classNames from 'classnames';
 
 import './List.scss';
 
 interface listProps {
-    items: itemsFromList[];
+    items: itemsFromList[],
+    isRemovable: boolean,
+    
 }
 
 interface itemsFromList{
     color?: string,
     icon?: string,
     name: string,
-    active?: boolean
+    isActive?: boolean,
+    className?: any
 } 
 
-const List: React.FunctionComponent<listProps> = ({ items }) => {
+const List: React.FunctionComponent<listProps> = ({ items, isRemovable }) => {
     return (
         <ul className="list">
             {
                 items.map((item: itemsFromList, index: number) => (
                     
-                    <li key={index} className={item.active ? 'active' : ''}>
+                    <li key={index} className={classNames(item.className, {'active': item.isActive})}>
                         <i>{item.icon ? (
                             <img src={item.icon} alt="Icon" />
                             ) : (

@@ -2,6 +2,7 @@ import React from 'react';
 
 import './index.scss';
 import listSvg from './assets/img/list.svg';
+import plusSvg from './assets/img/plus.svg';
 
 import List from './components/List'
 
@@ -14,21 +15,30 @@ function App() {
           {
             icon: listSvg,
             name: 'Все задачи',
+            
           }
-        ]}/>
+        ]} isRemovable={false}/>
         <List items={[
           {
             color: "pink",
             name: 'Поспать', 
-            active: false
+            isActive: false
           },
           {
             color: "green",
             name: 'Купить покушать',
-            active: true
+            isActive: true
           },
 
-        ]} />
+        ]} isRemovable={true}/>
+        <List items={[
+          { 
+            className: 'list__add-button',
+            icon: plusSvg,
+            name: 'Добавить список', 
+            isActive: false
+          }
+        ]} isRemovable={false}/>
       </div>
       <div className="todo__tasks">
 
