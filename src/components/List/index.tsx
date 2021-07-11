@@ -6,6 +6,7 @@ import './List.scss';
 interface listProps {
     items: itemsFromList[],
     isRemovable: boolean,
+    onClickVizible?: any;
     
 }
 
@@ -17,9 +18,9 @@ interface itemsFromList{
     className?: any
 } 
 
-const List: React.FunctionComponent<listProps> = ({ items, isRemovable }) => {
+const List: React.FunctionComponent<listProps> = ({ items, isRemovable, onClickVizible }) => {
     return (
-        <ul className="list">
+        <ul className="list" onClick={onClickVizible}>
             {
                 items.map((item: itemsFromList, index: number) => (
                     
