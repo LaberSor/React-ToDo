@@ -2,9 +2,9 @@ import React from 'react';
 
 import './index.scss';
 import listSvg from './assets/img/list.svg';
-import plusSvg from './assets/img/plus.svg';
 
-import List from './components/List'
+import List from './components/List';
+import AddButtonList from './components/AddButtonList';
 
 function App() {
 
@@ -31,14 +31,7 @@ function App() {
           },
 
         ]} isRemovable={true}/>
-        <List items={[
-          { 
-            className: 'list__add-button',
-            icon: plusSvg,
-            name: 'Добавить список', 
-            isActive: false
-          }
-        ]} isRemovable={false}/>
+       <AddButtonList />
       </div>
       <div className="todo__tasks">
 
