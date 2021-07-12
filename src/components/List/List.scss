@@ -21,37 +21,14 @@
       background: #ffffff;
     }
 
+    .badge {
+      position: relative;
+      left: 5px;
+    }
+
     i {
       display: inline-flex;
       margin-right: 8px;
-    }
-
-    .badge {
-      width: 10px;
-      height: 10px;
-      border-radius: 30px;
-      position: relative;
-      left: 5px;
-
-      &--green {
-        background-color: #42b883;
-      }
-
-      &--blue {
-        background-color: #64c4ed;
-      }
-
-      &--pink {
-        background-color: #ffbbcc;
-      }
-
-      &--palegreen {
-        background-color: #b6e6bd;
-      }
-
-      &--gray {
-        background-color: #c9d1d3;
-      }
     }
   }
 }

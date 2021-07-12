@@ -3,8 +3,9 @@ import React from 'react';
 import './index.scss';
 import listSvg from './assets/img/list.svg';
 
+
 import List from './components/List';
-import AddButtonList from './components/AddButtonList';
+import AddList from './components/AddButtonList';
 
 function App() {
 
@@ -31,7 +32,7 @@ function App() {
           },
 
         ]} isRemovable={true}/>
-       <AddButtonList />
+       <AddList /* colors={db.colors} *//>
       </div>
       <div className="todo__tasks">
 

@@ -1,6 +1,7 @@
 import React from "react";
 import classNames from 'classnames';
 
+import Badge from '../Badge'
 import './List.scss';
 
 interface listProps {
@@ -28,7 +29,7 @@ const List: React.FunctionComponent<listProps> = ({ items, isRemovable, onClickV
                         <i>{item.icon ? (
                             <img src={item.icon} alt="Icon" />
                             ) : (
-                            <i className={`badge badge--${item.color}`}></i>)
+                           <Badge color={item.color}/>)
                         }</i>
                         <span>{item.name}</span>
                     </li>
