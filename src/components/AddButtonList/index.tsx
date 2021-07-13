@@ -10,21 +10,24 @@ import closeSvg from '../../assets/img/close.svg';
 import List from "../List";
 import Badge from "../Badge";
 
-/* interface addListPropsextends Array<propsFromAddList> {
-    colors: [propsFromAddList];
+interface addListProps{
+    onAdd(object: any): any;
 } 
- */
-/* interface propsFromAddList {
-    id: any,
-    name: any
-} */
 
-const AddList/* : React.FunctionComponent< addListProps > */ = (/* colors */) => {
+const AddList: React.FunctionComponent< addListProps > = (onAdd:any) => {
     const [isPopupVizible, setPopupVizible] = React.useState(false);
     const [isColorActive, setColorActive] = React.useState(colors[0].id);
+    const [inputValue, setInputValue] = React.useState("");
 
     const popupVizibility = () => {
         setPopupVizible(!isPopupVizible);
+    }
+
+    const addList = () => {
+        if (!inputValue) {
+            return;
+        }
+        onAdd({id:Math.random(), name: inputValue, colorId: isColorActive});
     }
 
     return (
@@ -40,7 +43,12 @@ const AddList/* : React.FunctionComponent< addListProps > */ = (/* colors */) =>
 
             {isPopupVizible && <div className="add-list__popup">
                 <img onClick={() => popupVizibility()} src={closeSvg} alt="Close" className="add-list__popup-close-btn"/>
-                <input className="field" type="text" placeholder="Название списка"></input>
+                <input 
+                    onChange={element => setInputValue(element.target.value)} 
+                    className="field" 
+                    type="text" 
+                    placeholder="Название списка">
+                </input>
                 <div className="add-list__popup-colors">
                     {
                         colors.map((color: any) => 
@@ -52,7 +60,7 @@ const AddList/* : React.FunctionComponent< addListProps > */ = (/* colors */) =>
                         )
                     }
                 </div>
-                <button className="button">Добавить</button>
+                <button onClick={addList} value={inputValue} className="button">Добавить</button>
              </div>}
         </div>
     )
