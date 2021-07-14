@@ -19,6 +19,7 @@ function App() {
   function onAddList(obj: object): void {
     const newList: Array<any> = [...lists, obj];
     setListsState(newList);
+    console.log(newList);
   }
 
   return (
@@ -28,7 +29,6 @@ function App() {
           {
             icon: listSvg,
             name: 'Все задачи',
-            
           }
         ]} isRemovable={false}/>
         <List items={listsState} isRemovable={true}/>

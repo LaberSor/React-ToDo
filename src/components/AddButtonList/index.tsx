@@ -10,11 +10,11 @@ import closeSvg from '../../assets/img/close.svg';
 import List from "../List";
 import Badge from "../Badge";
 
-interface addListProps{
-    onAdd: (object: any) => void;
-} 
+ interface addListProps{
+    onAdd(object: any): void
+}  
 
-const AddList: React.FunctionComponent< addListProps > = (onAdd:any) => {
+const AddList: React.FunctionComponent<addListProps> = ({onAdd}) => {
     const [isPopupVizible, setPopupVizible] = React.useState(false);
     const [isColorActive, setColorActive] = React.useState(colors[0].id);
     const [inputValue, setInputValue] = React.useState("");
@@ -23,11 +23,13 @@ const AddList: React.FunctionComponent< addListProps > = (onAdd:any) => {
         setPopupVizible(!isPopupVizible);
     }
 
-    const addList = () => {
-        if (!inputValue) {
+    function addList (): any  {
+        /* if (!inputValue) {
             return;
-        }
-        onAdd({ id: Math.random(), name: inputValue, colorId: isColorActive});
+        } */
+        console.log("test")
+        const color = colors.filter(c => c.id === isColorActive)[0].name;
+        onAdd({ id: Math.random(), name: inputValue, color});
     }
 
     return (
@@ -60,7 +62,7 @@ const AddList: React.FunctionComponent< addListProps > = (onAdd:any) => {
                         )
                     }
                 </div>
-                <button onClick={() => addList} value={inputValue} className="button">Добавить</button>
+                <button onClick={addList} value={inputValue} className="button">Добавить</button>
              </div>}
         </div>
     )
