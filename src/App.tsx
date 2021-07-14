@@ -7,17 +7,19 @@ import { lists, colors } from './assets/db.json'
 import List from './components/List';
 import AddList from './components/AddButtonList';
 
+
 function App() {
   const [listsState, setListsState] = React.useState(
     lists.map(item => {
-      item.color = colors.filter(color => color.id == item.colorId)[0].name;
+      item.color = colors.filter(color => color.id === item.colorId)[0].name;
       return item;
     })
   );
 
-    function onAddList(obj: object) {
-      console.log(obj);
-    }
+  function onAddList(obj: object): void {
+    const newList: Array<any> = [...lists, obj];
+    setListsState(newList);
+  }
 
   return (
     <div className="todo">

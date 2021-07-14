@@ -11,7 +11,7 @@ import List from "../List";
 import Badge from "../Badge";
 
 interface addListProps{
-    onAdd(object: any): any;
+    onAdd: (object: any) => void;
 } 
 
 const AddList: React.FunctionComponent< addListProps > = (onAdd:any) => {
@@ -27,7 +27,7 @@ const AddList: React.FunctionComponent< addListProps > = (onAdd:any) => {
         if (!inputValue) {
             return;
         }
-        onAdd({id:Math.random(), name: inputValue, colorId: isColorActive});
+        onAdd({ id: Math.random(), name: inputValue, colorId: isColorActive});
     }
 
     return (
@@ -60,7 +60,7 @@ const AddList: React.FunctionComponent< addListProps > = (onAdd:any) => {
                         )
                     }
                 </div>
-                <button onClick={addList} value={inputValue} className="button">Добавить</button>
+                <button onClick={() => addList} value={inputValue} className="button">Добавить</button>
              </div>}
         </div>
     )
