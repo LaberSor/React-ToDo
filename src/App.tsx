@@ -17,7 +17,7 @@ function App() {
   );
 
   function onAddList(obj: object): void {
-    const newList: Array<any> = [...lists, obj];
+    const newList: Array<any> = [...listsState, obj];
     setListsState(newList);
     console.log(newList);
   }

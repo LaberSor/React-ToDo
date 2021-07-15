@@ -19,17 +19,20 @@ const AddList: React.FunctionComponent<addListProps> = ({onAdd}) => {
     const [isColorActive, setColorActive] = React.useState(colors[0].id);
     const [inputValue, setInputValue] = React.useState("");
 
-    const popupVizibility = () => {
+    const onClose = (): void => {
         setPopupVizible(!isPopupVizible);
+        setInputValue('');
+        setColorActive(colors[0].id);
     }
 
-    function addList (): any  {
-        /* if (!inputValue) {
+    function addList (): void  {
+        if (!inputValue) {
             return;
-        } */
+        } 
         console.log("test")
         const color = colors.filter(c => c.id === isColorActive)[0].name;
-        onAdd({ id: Math.random(), name: inputValue, color});
+        onAdd({ id: Math.random()*10, name: inputValue, color});
+        onClose();
     }
 
     return (
@@ -41,10 +44,10 @@ const AddList: React.FunctionComponent<addListProps> = ({onAdd}) => {
                 name: 'Добавить список', 
                 isActive: false
             }
-            ]} isRemovable={false} onClickVizible={() => popupVizibility()}/>
+            ]} isRemovable={false} onClickVizible={() => onClose()}/>
 
             {isPopupVizible && <div className="add-list__popup">
-                <img onClick={() => popupVizibility()} src={closeSvg} alt="Close" className="add-list__popup-close-btn"/>
+                <img onClick={() => onClose()} src={closeSvg} alt="Close" className="add-list__popup-close-btn"/>
                 <input 
                     onChange={element => setInputValue(element.target.value)} 
                     className="field" 
