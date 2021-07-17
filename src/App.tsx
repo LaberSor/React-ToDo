@@ -19,7 +19,11 @@ function App() {
   function onAddList(obj: object): void {
     const newList: Array<any> = [...listsState, obj];
     setListsState(newList);
-    console.log(newList);
+  }
+
+  function removeList(obj: any):void {
+    const newList: Array<any> = listsState.filter(list => list.name !== obj.name)
+    setListsState(newList);
   }
 
   return (
@@ -31,7 +35,7 @@ function App() {
             name: 'Все задачи',
           }
         ]} isRemovable={false} />
-        <List items={listsState} isRemovable={true} onRemove={list => {console.log(list)}}/>
+        <List items={listsState} isRemovable={true} onRemove={obj => {removeList(obj)}}/>
        <AddList onAdd={onAddList}/>
       </div>
       <div className="todo__tasks">

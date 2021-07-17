@@ -12,13 +12,6 @@ interface listProps {
      onRemove?:(item: itemsFromList) => void
 }
 
-/* interface objForRemove {
-    color?: string,
-    colorId?: number,
-    id?: number,
-    name?: string
-} */
-
 interface itemsFromList{
     color?: string,
     icon?: string,
@@ -31,7 +24,7 @@ const List: React.FunctionComponent<listProps> = ({ items, isRemovable, onClickV
     return (
         <ul className="list" onClick={onClickVizible}>
             {
-                items && items.map((item: itemsFromList /* | objForRemove */, index: number) => (
+                items && items.map((item: itemsFromList, index: number) => (
                     
                     <li key={index} className={classNames(item.className, {'active': item.isActive})}>
                         <i>{item.icon ? (
