@@ -1,15 +1,23 @@
 import React from "react";
 import classNames from 'classnames';
 
+import removeSvg from '../../assets/img/remove.svg'
 import Badge from '../Badge'
 import './List.scss';
 
 interface listProps {
-    items: itemsFromList[],
+    items: Array<itemsFromList>,
     isRemovable: boolean,
-    onClickVizible?: any;
-    
+    onClickVizible?: any,
+     onRemove?:(item: itemsFromList) => void
 }
+
+/* interface objForRemove {
+    color?: string,
+    colorId?: number,
+    id?: number,
+    name?: string
+} */
 
 interface itemsFromList{
     color?: string,
@@ -19,11 +27,11 @@ interface itemsFromList{
     className?: any
 } 
 
-const List: React.FunctionComponent<listProps> = ({ items, isRemovable, onClickVizible }) => {
+const List: React.FunctionComponent<listProps> = ({ items, isRemovable, onClickVizible, onRemove }) => {
     return (
         <ul className="list" onClick={onClickVizible}>
             {
-                items.map((item: itemsFromList, index: number) => (
+                items && items.map((item: itemsFromList /* | objForRemove */, index: number) => (
                     
                     <li key={index} className={classNames(item.className, {'active': item.isActive})}>
                         <i>{item.icon ? (
@@ -32,6 +40,12 @@ const List: React.FunctionComponent<listProps> = ({ items, isRemovable, onClickV
                            <Badge color={item.color}/>)
                         }</i>
                         <span>{item.name}</span>
+                        {isRemovable && <img 
+                        src={removeSvg} 
+                        alt="remove list" 
+                        className="list__remove-btn"
+                        onClick={() => onRemove!(item)}/>}
+
                     </li>
                     
                 ))

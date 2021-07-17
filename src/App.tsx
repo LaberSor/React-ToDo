@@ -30,8 +30,8 @@ function App() {
             icon: listSvg,
             name: 'Все задачи',
           }
-        ]} isRemovable={false}/>
-        <List items={listsState} isRemovable={true}/>
+        ]} isRemovable={false} />
+        <List items={listsState} isRemovable={true} onRemove={list => {console.log(list)}}/>
        <AddList onAdd={onAddList}/>
       </div>
       <div className="todo__tasks">
