@@ -6,6 +6,7 @@ import { lists, colors } from './assets/db.json'
 
 import List from './components/List';
 import AddList from './components/AddButtonList';
+import Tasks from './components/Tasks'
 
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
        <AddList onAdd={onAddList}/>
       </div>
       <div className="todo__tasks">
-
+        <Tasks />
       </div>
     </div>
   );

@@ -21,6 +21,12 @@ interface itemsFromList{
 } 
 
 const List: React.FunctionComponent<listProps> = ({ items, isRemovable, onClickVizible, onRemove }) => {
+    const removingList = (item: itemsFromList) => {
+        if (window.confirm('Вы действительно хотите удалить список?')) {
+            onRemove!(item)
+        }
+    }
+
     return (
         <ul className="list" onClick={onClickVizible}>
             {
@@ -37,7 +43,7 @@ const List: React.FunctionComponent<listProps> = ({ items, isRemovable, onClickV
                         src={removeSvg} 
                         alt="remove list" 
                         className="list__remove-btn"
-                        onClick={() => onRemove!(item)}/>}
+                        onClick={() => removingList(item)}/>}
 
                     </li>
                     
