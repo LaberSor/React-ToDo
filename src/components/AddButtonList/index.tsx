@@ -4,25 +4,31 @@ import React from "react";
 import plusSvg from '../../assets/img/plus.svg';
 import './AddList.scss';
 import '../../index.scss';
-import { colors } from '../../assets/db.json'
 import closeSvg from '../../assets/img/close.svg';
 
 import List from "../List";
 import Badge from "../Badge";
 
  interface addListProps{
-    onAdd(object: any): void
+    onAdd(object: any): void,
+    colors: any[]
 }  
 
-const AddList: React.FunctionComponent<addListProps> = ({onAdd}) => {
+const AddList: React.FunctionComponent<addListProps> = ({onAdd, colors}) => {
     const [isPopupVizible, setPopupVizible] = React.useState(false);
-    const [isColorActive, setColorActive] = React.useState(colors[0].id);
+    const [selectedColor, setSelectedColor] = React.useState(0);
     const [inputValue, setInputValue] = React.useState("");
+
+    React.useEffect(() => {
+        /* if (Array.isArray(colors)) {
+            setSelectedColor(colors[0].id);
+        } */
+    }, [colors])
 
     const onClose = (): void => {
         setPopupVizible(!isPopupVizible);
         setInputValue('');
-        setColorActive(colors[0].id);
+        setSelectedColor(colors[0].id);
     }
 
     function addList (): void  {
@@ -30,7 +36,7 @@ const AddList: React.FunctionComponent<addListProps> = ({onAdd}) => {
             return;
         } 
         console.log("test")
-        const color = colors.filter(c => c.id === isColorActive)[0].name;
+        const color = colors.filter(c => c.id === selectedColor)[0].name;
         onAdd({ id: Math.random()*10, name: inputValue, color});
         onClose();
     }
@@ -58,8 +64,8 @@ const AddList: React.FunctionComponent<addListProps> = ({onAdd}) => {
                     {
                         colors.map((color: any) => 
                             <Badge 
-                            className={isColorActive === color.id && 'active'} 
-                            activateColor={() => setColorActive(color.id)} 
+                            className={selectedColor === color.id && 'active'} 
+                            activateColor={() => setSelectedColor(color.id)} 
                             key={color.id} 
                             color={color.name}/>
                         )

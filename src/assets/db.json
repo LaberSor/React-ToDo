@@ -5,10 +5,10 @@
         {"id":4,"name":"Книги","colorId":2,"color":""}
     ],
     "tasks": [
-        {"id":1,"listId":2,"text":"Изучить JavaScript"},
-        {"id":2,"listId":2,"text":"Изучить паттерны проектирования"},
-        {"id":3,"listId":2,"text":"Изучить хуки"},
-        {"id":4,"listId":2,"text":"Изучить Redux"}
+        {"id":1,"listId":2,"text":"Изучить JavaScript", "completed":true},
+        {"id":2,"listId":2,"text":"Изучить паттерны проектирования","completed":false},
+        {"id":3,"listId":2,"text":"Изучить хуки","completed":false},
+        {"id":4,"listId":2,"text":"Изучить Redux","completed":false}
 
     ],
     "colors": [
