@@ -4,17 +4,19 @@ import axios from 'axios';
 import './index.scss';
 import listSvg from './assets/img/list.svg';
 
-import { List, AddList, Tasks} from './components/index'
+import { List, AddList, Tasks } from './components/index'
 
 
 function App() {
   React.useEffect(() => {
-    axios.get("http://localhost:3002/lists?_expand=color").then(({data})=> {
+    axios.get("http://localhost:3002/lists").then(({data})=> {
       setLists(data);
     });
     axios.get("http://localhost:3002/colors").then(({data})=> {
       setColors(data);
     });
+    const test: any = console.log(lists)
+    setTimeout(test, 5000);
   }, [])
 
   const [colors, setColors] = React.useState([]) as any;
@@ -40,7 +42,7 @@ function App() {
           }
         ]} isRemovable={false} />
         <List items={lists} isRemovable={true} onRemove={obj => {removeList(obj)}}/>
-       <AddList onAdd={onAddList} colors={colors}/>
+       <AddList onAdd={onAddList} /* colors={colors} *//>
       </div>
       <div className="todo__tasks">
         <Tasks />

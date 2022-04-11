@@ -1,5 +1,5 @@
 import React from "react";
-
+import {colors} from '../../assets/db.json'
 
 import plusSvg from '../../assets/img/plus.svg';
 import './AddList.scss';
@@ -11,20 +11,20 @@ import Badge from "../Badge";
 
  interface addListProps{
     onAdd(object: any): void,
-    colors: any[]
+    colors?: any[]
 }  
 
-const AddList: React.FunctionComponent<addListProps> = ({onAdd, colors}) => {
+const AddList: React.FunctionComponent<addListProps> = ({onAdd/* , colors */}) => {
     const [isPopupVizible, setPopupVizible] = React.useState(false);
     const [selectedColor, setSelectedColor] = React.useState(0);
     const [inputValue, setInputValue] = React.useState("");
 
-    React.useEffect(() => {
-        /* if (Array.isArray(colors)) {
+    /* React.useEffect(() => {
+        if (Array.isArray(colors)) {
             setSelectedColor(colors[0].id);
-        } */
+        }
     }, [colors])
-
+ */
     const onClose = (): void => {
         setPopupVizible(!isPopupVizible);
         setInputValue('');
